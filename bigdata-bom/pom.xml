@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.bigdata.leumanuel</groupId>
+    <artifactId>bigdata-bom</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+    <name>Big Data - Bill of Materials</name>
+    <description>
+        Centralized version definitions and dependencyManagement
+        for every Big Data Pipeline project consuming this platform.
+    </description>
+
+    <url>https://github.com/Leupesquisa/bigdata-aggregator</url>
+
+    <licenses>
+        <license>
+            <name>Apache License 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection>scm:git:git@github.com:Leupesquisa/bigdata-aggregator.git</connection>
+        <developerConnection>scm:git:git@github.com:Leupesquisa/bigdata-aggregator.git</developerConnection>
+        <url>https://github.com/Leupesquisa/bigdata-aggregator</url>
+    </scm>
+
+    <properties>
+        <!-- Java -->
+        <java.version>17</java.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- Spring -->
+        <spring.boot.version>3.2.5</spring.boot.version>
+        <spring.cloud.version>2023.0.2</spring.cloud.version>
+        <spring.cloud.contract.version>4.1.4</spring.cloud.contract.version>
+
+        <!-- Spark -->
+        <spark.version>4.1.1</spark.version>
+        <spark.scala.suffix>2.13</spark.scala.suffix>
+        <hadoop.aws.version>3.3.6</hadoop.aws.version>
+        <aws.java.sdk.bundle.version>1.12.262</aws.java.sdk.bundle.version>
+
+        <!-- Databases -->
+        <postgresql.version>42.7.3</postgresql.version>
+        <ojdbc.version>23.4.0.24.05</ojdbc.version>
+        <liquibase.version>4.27.0</liquibase.version>
+
+        <!-- AWS SDK v2 -->
+        <aws.sdk.version>2.25.40</aws.sdk.version>
+        <aws.crt.version>0.29.20</aws.crt.version>
+        <spring.cloud.aws.version>3.1.1</spring.cloud.aws.version>
+
+        <!-- Reports / Files -->
+        <jasperreports.version>6.21.3</jasperreports.version>
+        <commons.csv.version>1.11.0</commons.csv.version>
+        <commons.math.version>3.6.1</commons.math.version>
+
+        <!-- Security / Rate limiting -->
+        <bucket4j.version>8.10.1</bucket4j.version>
+
+        <!-- Observability -->
+        <micrometer.version>1.12.5</micrometer.version>
+        <logstash.encoder.version>7.4</logstash.encoder.version>
+
+        <!-- OpenAPI -->
+        <springdoc.version>2.3.0</springdoc.version>
+
+        <!-- Tests -->
+        <junit.version>5.10.2</junit.version>
+        <assertj.version>3.25.3</assertj.version>
+        <mockito.version>5.11.0</mockito.version>
+        <testcontainers.version>1.19.7</testcontainers.version>
+        <jqwik.version>1.8.4</jqwik.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Spring Boot -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Spring Cloud -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring.cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Testcontainers -->
+            <dependency>
+                <groupId>org.testcontainers</groupId>
+                <artifactId>testcontainers-bom</artifactId>
+                <version>${testcontainers.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- AWS SDK v2 -->
+            <dependency>
+                <groupId>software.amazon.awssdk</groupId>
+                <artifactId>bom</artifactId>
+                <version>${aws.sdk.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Spring Cloud AWS -->
+            <dependency>
+                <groupId>io.awspring.cloud</groupId>
+                <artifactId>spring-cloud-aws-dependencies</artifactId>
+                <version>${spring.cloud.aws.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Spark (provided in pipeline modules) -->
+            <dependency>
+                <groupId>org.apache.spark</groupId>
+                <artifactId>spark-core_${spark.scala.suffix}</artifactId>
+                <version>${spark.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.spark</groupId>
+                <artifactId>spark-sql_${spark.scala.suffix}</artifactId>
+                <version>${spark.version}</version>
+            </dependency>
+
+            <!-- JDBC -->
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>${postgresql.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.oracle.database.jdbc</groupId>
+                <artifactId>ojdbc11</artifactId>
+                <version>${ojdbc.version}</version>
+            </dependency>
+
+            <!-- Hadoop AWS -->
+            <dependency>
+                <groupId>org.apache.hadoop</groupId>
+                <artifactId>hadoop-aws</artifactId>
+                <version>${hadoop.aws.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.amazonaws</groupId>
+                <artifactId>aws-java-sdk-bundle</artifactId>
+                <version>${aws.java.sdk.bundle.version}</version>
+            </dependency>
+
+            <!-- Liquibase -->
+            <dependency>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-core</artifactId>
+                <version>${liquibase.version}</version>
+            </dependency>
+
+            <!-- Reports -->
+            <dependency>
+                <groupId>net.sf.jasperreports</groupId>
+                <artifactId>jasperreports</artifactId>
+                <version>${jasperreports.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.sf.jasperreports</groupId>
+                <artifactId>jasperreports-pdf</artifactId>
+                <version>${jasperreports.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-csv</artifactId>
+                <version>${commons.csv.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-math3</artifactId>
+                <version>${commons.math.version}</version>
+            </dependency>
+
+            <!-- Rate limiting -->
+            <dependency>
+                <groupId>com.bucket4j</groupId>
+                <artifactId>bucket4j-core</artifactId>
+                <version>${bucket4j.version}</version>
+            </dependency>
+
+            <!-- OpenAPI -->
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+                <version>${springdoc.version}</version>
+            </dependency>
+
+            <!-- Logstash -->
+            <dependency>
+                <groupId>net.logstash.logback</groupId>
+                <artifactId>logstash-logback-encoder</artifactId>
+                <version>${logstash.encoder.version}</version>
+            </dependency>
+
+            <!-- Property-based testing -->
+            <dependency>
+                <groupId>net.jqwik</groupId>
+                <artifactId>jqwik</artifactId>
+                <version>${jqwik.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Packages-bigdata-aggregator</name>
+            <url>https://maven.pkg.github.com/Leupesquisa/bigdata-aggregator</url>
+        </repository>
+    </distributionManagement>
+</project>
