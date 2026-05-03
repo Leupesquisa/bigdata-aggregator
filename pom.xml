@@ -2,8 +2,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.bigdata.leumanuel</groupId>
-    <artifactId>aggregator</artifactId>
+    <groupId>com.leumanuel.aggregator</groupId>
+    <artifactId>bigdata-aggregator</artifactId>
     <version>1.0.1</version>
     <packaging>pom</packaging>
 
