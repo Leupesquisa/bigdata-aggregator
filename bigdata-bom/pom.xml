@@ -4,7 +4,7 @@
 
     <groupId>com.leumanuel.aggregator</groupId>
     <artifactId>bigdata-bom</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <packaging>pom</packaging>
 
     <name>Big Data - Bill of Materials</name>
