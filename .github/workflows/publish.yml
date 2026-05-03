@@ -23,10 +23,6 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
           cache: 'maven'
-
-      - name: Configure Maven settings.xml
-        uses: s4u/maven-settings-action@v3.0.0
-        with:
           servers: |
             [{
               "id": "github",
