@@ -10,7 +10,7 @@ Ensure your project inherits the shared build configuration:
 <parent>
     <groupId>com.leumanuel.aggregator</groupId>
     <artifactId>bigdata-build</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.3</version>
     <relativePath/> <!-- lookup remote -->
 </parent>
 ```
@@ -41,7 +41,7 @@ Use the BOM to manage dependency versions consistently:
         <dependency>
             <groupId>com.leumanuel.aggregator</groupId>
             <artifactId>bigdata-bom</artifactId>
-            <version>1.0.0</version>
+            <version>1.0.3</version>
             <type>pom</type>
             <scope>import</scope>
         </dependency>
