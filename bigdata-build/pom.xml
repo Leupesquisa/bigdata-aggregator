@@ -6,7 +6,7 @@
 
     <groupId>com.leumanuel.aggregator</groupId>
     <artifactId>bigdata-build</artifactId>
-    <version>1.0.7</version>
+    <version>1.0.8</version>
     <packaging>pom</packaging>
 
     <name>Big Data - Build Conventions</name>
@@ -24,8 +24,8 @@
         <jasperreports.plugin.version>3.6.1</jasperreports.plugin.version>
         <exec.maven.plugin.version>3.6.3</exec.maven.plugin.version>
 
-        <jacoco.line.minimum>0.00</jacoco.line.minimum>
-        <jacoco.branch.minimum>0.00</jacoco.branch.minimum>
+        <jacoco.line.minimum>0.90</jacoco.line.minimum>
+        <jacoco.branch.minimum>0.90</jacoco.branch.minimum>
 
         <skip.perf>true</skip.perf>
         <skip.scan>true</skip.scan>

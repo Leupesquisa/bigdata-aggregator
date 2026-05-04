@@ -4,7 +4,7 @@
 
     <groupId>com.leumanuel.aggregator</groupId>
     <artifactId>bigdata-aggregator</artifactId>
-    <version>1.0.7</version>
+    <version>1.0.8</version>
     <packaging>pom</packaging>
 
     <name>Big Data - Aggregator</name>
