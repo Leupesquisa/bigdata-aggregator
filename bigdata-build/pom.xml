@@ -6,7 +6,7 @@
 
     <groupId>com.leumanuel.aggregator</groupId>
     <artifactId>bigdata-build</artifactId>
-    <version>1.0.8</version>
+    <version>1.0.9</version>
     <packaging>pom</packaging>
 
     <name>Big Data - Build Conventions</name>
