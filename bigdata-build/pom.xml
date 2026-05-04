@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
-                             https://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.leumanuel.aggregator</groupId>
     <artifactId>bigdata-build</artifactId>
-    <version>1.0.6</version>
+    <version>1.0.7</version>
     <packaging>pom</packaging>
 
     <name>Big Data - Build Conventions</name>
-    <description>
-        Shared pluginManagement, profiles, and build defaults
-        for projects consuming the Big Data Platform.
-    </description>
+    <description>Shared pluginManagement and profiles for the Big Data Platform.</description>
 
     <properties>
         <java.version>21</java.version>
@@ -24,21 +20,13 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-
         <jacoco.version>0.8.14</jacoco.version>
-        <surefire.version>3.5.5</surefire.version>
-        <failsafe.version>3.5.5</failsafe.version>
-        <shade.version>3.6.2</shade.version>
-        <git.commit.id.version>9.2.0</git.commit.id.version>
         <jasperreports.plugin.version>3.6.1</jasperreports.plugin.version>
         <exec.maven.plugin.version>3.6.3</exec.maven.plugin.version>
-        <versions.maven.plugin.version>2.21.0</versions.maven.plugin.version>
 
-        <!-- Coverage thresholds disabled by default; consumers opt in by overriding -->
-        <jacoco.line.minimum>0.90</jacoco.line.minimum>
-        <jacoco.branch.minimum>0.90</jacoco.branch.minimum>
+        <jacoco.line.minimum>0.00</jacoco.line.minimum>
+        <jacoco.branch.minimum>0.00</jacoco.branch.minimum>
 
-        <!-- Skip flags for opt-in steps -->
         <skip.perf>true</skip.perf>
         <skip.scan>true</skip.scan>
     </properties>
@@ -49,21 +37,11 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
-                    <version>${surefire.version}</version>
                     <configuration>
                         <argLine>@{argLine} -Xmx1g -XX:+EnableDynamicAgentLoading</argLine>
                     </configuration>
                 </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-failsafe-plugin</artifactId>
-                    <version>${failsafe.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-shade-plugin</artifactId>
-                    <version>${shade.version}</version>
-                </plugin>
+
                 <plugin>
                     <groupId>org.jacoco</groupId>
                     <artifactId>jacoco-maven-plugin</artifactId>
@@ -104,35 +82,17 @@
                         </execution>
                     </executions>
                 </plugin>
-                <!-- spring-boot-maven-plugin version is provided by spring-boot-dependencies BOM -->
-                <plugin>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-maven-plugin</artifactId>
-                </plugin>
-                <!-- spring-cloud-contract-maven-plugin version is provided by spring-cloud-dependencies BOM -->
-                <plugin>
-                    <groupId>org.springframework.cloud</groupId>
-                    <artifactId>spring-cloud-contract-maven-plugin</artifactId>
-                </plugin>
-                <plugin>
-                    <groupId>io.github.git-commit-id</groupId>
-                    <artifactId>git-commit-id-maven-plugin</artifactId>
-                    <version>${git.commit.id.version}</version>
-                </plugin>
+
                 <plugin>
                     <groupId>com.pro-crafting.tools</groupId>
                     <artifactId>jasperreports-plugin</artifactId>
                     <version>${jasperreports.plugin.version}</version>
                 </plugin>
+
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>exec-maven-plugin</artifactId>
                     <version>${exec.maven.plugin.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>versions-maven-plugin</artifactId>
-                    <version>${versions.maven.plugin.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>

@@ -1,22 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
-                             https://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.leumanuel.aggregator</groupId>
     <artifactId>bigdata-bom</artifactId>
-    <version>1.0.6</version>
+    <version>1.0.7</version>
     <packaging>pom</packaging>
 
     <name>Big Data - Bill of Materials</name>
-    <description>
-        Centralized version definitions and dependencyManagement
-        for every Big Data Pipeline project consuming this platform.
-        Aligned with Spring Boot 3.5.x line (OSS support until June 2026).
-    </description>
-
+    <description>Centralized version definitions for the Big Data Pipeline platform.</description>
     <url>https://github.com/Leupesquisa/bigdata-aggregator</url>
 
     <licenses>
@@ -33,7 +27,6 @@
     </scm>
 
     <properties>
-
         <java.version>21</java.version>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
@@ -41,57 +34,32 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <!-- Spring Boot / Spring Cloud -->
-        <spring.boot.version>3.5.13</spring.boot.version>
+        <spring.boot.version>3.5.14</spring.boot.version>
         <spring.cloud.version>2025.0.1</spring.cloud.version>
-        <spring.cloud.contract.version>4.3.0</spring.cloud.contract.version>
 
-        <!-- Apache Spark / Hadoop -->
         <spark.version>4.1.1</spark.version>
         <spark.scala.suffix>2.13</spark.scala.suffix>
         <hadoop.aws.version>3.4.2</hadoop.aws.version>
-		
-        <!-- Databases -->
-        <postgresql.version>42.7.10</postgresql.version>
-        <ojdbc.version>23.26.1.0.0</ojdbc.version>
-        <liquibase.version>4.33.0</liquibase.version>
 
+        <netty.version>4.2.7.Final</netty.version>
 
-        <!-- AWS SDK v2 / Spring Cloud AWS -->
         <aws.sdk.version>2.43.2</aws.sdk.version>
-        <aws.crt.version>0.36.12</aws.crt.version>
         <spring.cloud.aws.version>3.4.0</spring.cloud.aws.version>
 
-        <!-- Reports / Files-->
+        <ojdbc.version>23.26.1.0.0</ojdbc.version>
+
         <jasperreports.version>6.21.5</jasperreports.version>
         <commons.csv.version>1.12.0</commons.csv.version>
         <commons.math.version>3.6.1</commons.math.version>
 
-
-        <!-- Security / Rate limiting -->
         <bucket4j.version>8.18.0</bucket4j.version>
-
-
-        <!-- Observability -->
-        <micrometer.version>1.14.5</micrometer.version>
         <logstash.encoder.version>9.0</logstash.encoder.version>
-
-        <!-- OpenAPI                                                -->
         <springdoc.version>2.8.16</springdoc.version>
-
-        <!-- Tests -->
-
-        <junit.version>5.11.4</junit.version>
-        <assertj.version>3.27.7</assertj.version>
-        <mockito.version>5.18.0</mockito.version>
-        <testcontainers.version>1.21.3</testcontainers.version>
         <jqwik.version>1.9.3</jqwik.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
-
-            <!-- Spring Boot/Spring cloud-->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
@@ -99,14 +67,16 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
                 <version>${spring.cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
-            </dependency>			
-			<dependency>
+            </dependency>
+
+            <dependency>
                 <groupId>io.awspring.cloud</groupId>
                 <artifactId>spring-cloud-aws-dependencies</artifactId>
                 <version>${spring.cloud.aws.version}</version>
@@ -114,7 +84,6 @@
                 <scope>import</scope>
             </dependency>
 
-            <!-- AWS SDK v2 BOM -->
             <dependency>
                 <groupId>software.amazon.awssdk</groupId>
                 <artifactId>bom</artifactId>
@@ -122,24 +91,6 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-			
-            <!-- JUnit BOM / Testcontainers BOM    -->
-             <dependency>
-                <groupId>org.junit</groupId>
-                <artifactId>junit-bom</artifactId>
-                <version>${junit.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.testcontainers</groupId>
-                <artifactId>testcontainers-bom</artifactId>
-                <version>${testcontainers.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-            <!-- Spark-->
 
             <dependency>
                 <groupId>org.apache.spark</groupId>
@@ -162,19 +113,6 @@
                 <version>${spark.version}</version>
             </dependency>
 
-            <!-- JDBC drivers-->
-            <dependency>
-                <groupId>org.postgresql</groupId>
-                <artifactId>postgresql</artifactId>
-                <version>${postgresql.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.oracle.database.jdbc</groupId>
-                <artifactId>ojdbc11</artifactId>
-                <version>${ojdbc.version}</version>
-            </dependency>
-
-            <!-- Hadoop AWS / S3A -->
             <dependency>
                 <groupId>org.apache.hadoop</groupId>
                 <artifactId>hadoop-aws</artifactId>
@@ -195,15 +133,12 @@
                 </exclusions>
             </dependency>
 
-
-            <!-- Liquibase-->
             <dependency>
-                <groupId>org.liquibase</groupId>
-                <artifactId>liquibase-core</artifactId>
-                <version>${liquibase.version}</version>
+                <groupId>com.oracle.database.jdbc</groupId>
+                <artifactId>ojdbc11</artifactId>
+                <version>${ojdbc.version}</version>
             </dependency>
 
-            <!-- Reports-->
             <dependency>
                 <groupId>net.sf.jasperreports</groupId>
                 <artifactId>jasperreports</artifactId>
@@ -225,14 +160,12 @@
                 <version>${commons.math.version}</version>
             </dependency>
 
-            <!-- Rate limiting (Bucket4j JDK17 line) -->
             <dependency>
                 <groupId>com.bucket4j</groupId>
                 <artifactId>bucket4j_jdk17-core</artifactId>
                 <version>${bucket4j.version}</version>
             </dependency>
-			
-            <!-- OpenAPI / springdoc -->
+
             <dependency>
                 <groupId>org.springdoc</groupId>
                 <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
@@ -244,14 +177,12 @@
                 <version>${springdoc.version}</version>
             </dependency>
 
-            <!-- Logstash JSON encoder -->
             <dependency>
                 <groupId>net.logstash.logback</groupId>
                 <artifactId>logstash-logback-encoder</artifactId>
                 <version>${logstash.encoder.version}</version>
             </dependency>
 
-            <!-- Property-based testing-->
             <dependency>
                 <groupId>net.jqwik</groupId>
                 <artifactId>jqwik</artifactId>
