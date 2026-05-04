@@ -129,11 +129,6 @@
             <!-- Spark (provided in pipeline modules) -->
             <dependency>
                 <groupId>org.apache.spark</groupId>
-                <artifactId>spark-core_${spark.scala.suffix}</artifactId>
-                <version>${spark.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.spark</groupId>
                 <artifactId>spark-sql_${spark.scala.suffix}</artifactId>
                 <version>${spark.version}</version>
             </dependency>
