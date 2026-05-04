@@ -22,12 +22,6 @@ Add the GitHub Packages repository where the artifacts are hosted:
     <repository>
         <id>github</id>
         <url>https://maven.pkg.github.com/Leupesquisa/bigdata-aggregator/</url>
-        <releases>
-            <enabled>true</enabled>
-        </releases>
-        <snapshots>
-            <enabled>false</enabled>
-        </snapshots>
     </repository>
 </repositories>
 ```
