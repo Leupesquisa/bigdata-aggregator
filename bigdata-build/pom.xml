@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.leumanuel.aggregator</groupId>
     <artifactId>bigdata-build</artifactId>
-    <version>1.0.5</version>
+    <version>1.0.6</version>
     <packaging>pom</packaging>
 
     <name>Big Data - Build Conventions</name>
@@ -17,23 +20,23 @@
         <java.version>21</java.version>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
+        <maven.compiler.release>21</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <!-- Plugin versions -->
-        <jacoco.version>0.8.12</jacoco.version>
-        <surefire.version>3.2.5</surefire.version>
-        <failsafe.version>3.2.5</failsafe.version>
-        <shade.version>3.5.3</shade.version>
-        <spring.boot.maven.plugin.version>3.2.5</spring.boot.maven.plugin.version>
-        <git.commit.id.version>7.0.0</git.commit.id.version>
-        <jasperreports.plugin.version>2.8</jasperreports.plugin.version>
-        <spring.cloud.contract.version>4.1.4</spring.cloud.contract.version>
-        <exec.maven.plugin.version>3.2.0</exec.maven.plugin.version>
-        <versions.maven.plugin.version>2.16.2</versions.maven.plugin.version>
 
-        <!-- Coverage gates (overridable by consumer) -->
-        <jacoco.line.minimum>0.70</jacoco.line.minimum>
-        <jacoco.branch.minimum>0.65</jacoco.branch.minimum>
+        <jacoco.version>0.8.14</jacoco.version>
+        <surefire.version>3.5.5</surefire.version>
+        <failsafe.version>3.5.5</failsafe.version>
+        <shade.version>3.6.2</shade.version>
+        <git.commit.id.version>9.2.0</git.commit.id.version>
+        <jasperreports.plugin.version>3.6.1</jasperreports.plugin.version>
+        <exec.maven.plugin.version>3.6.3</exec.maven.plugin.version>
+        <versions.maven.plugin.version>2.21.0</versions.maven.plugin.version>
+
+        <!-- Coverage thresholds disabled by default; consumers opt in by overriding -->
+        <jacoco.line.minimum>0.90</jacoco.line.minimum>
+        <jacoco.branch.minimum>0.90</jacoco.branch.minimum>
 
         <!-- Skip flags for opt-in steps -->
         <skip.perf>true</skip.perf>
@@ -101,10 +104,15 @@
                         </execution>
                     </executions>
                 </plugin>
+                <!-- spring-boot-maven-plugin version is provided by spring-boot-dependencies BOM -->
                 <plugin>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
-                    <version>${spring.boot.maven.plugin.version}</version>
+                </plugin>
+                <!-- spring-cloud-contract-maven-plugin version is provided by spring-cloud-dependencies BOM -->
+                <plugin>
+                    <groupId>org.springframework.cloud</groupId>
+                    <artifactId>spring-cloud-contract-maven-plugin</artifactId>
                 </plugin>
                 <plugin>
                     <groupId>io.github.git-commit-id</groupId>
@@ -112,14 +120,9 @@
                     <version>${git.commit.id.version}</version>
                 </plugin>
                 <plugin>
-                    <groupId>com.alexnederlof</groupId>
+                    <groupId>com.pro-crafting.tools</groupId>
                     <artifactId>jasperreports-plugin</artifactId>
                     <version>${jasperreports.plugin.version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.springframework.cloud</groupId>
-                    <artifactId>spring-cloud-contract-maven-plugin</artifactId>
-                    <version>${spring.cloud.contract.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
